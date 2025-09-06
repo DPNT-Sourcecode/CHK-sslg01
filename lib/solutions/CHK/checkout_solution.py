@@ -8,14 +8,14 @@ class CheckoutSolution:
     def checkout(self, skus):
         if skus == "": return 0
 
-        if len(re.findall("^[^A-D]+$", skus)) > 0: return -1
-
         counter = {
             "A": skus.count("A") if skus.find("A") != -1 else 0,
             "B": skus.count("B") if skus.find("B") != -1 else 0,
             "C": skus.count("C") if skus.find("C") != -1 else 0,
             "D": skus.count("D") if skus.find("D") != -1 else 0
         }
+
+        if len(skus) != sum(counter.values()): return -1
 
         price = counter["A"] // 3 * 130 + counter["A"] % 3 * 50
         price += counter["B"] // 2 * 45 + counter["B"] % 2 * 30
@@ -24,6 +24,15 @@ class CheckoutSolution:
 
         return price
         
+if __name__ == "__main__":
+    checkout_solution = CheckoutSolution()
+    print(checkout_solution.checkout("ABCa"))
+    # print(checkout_solution.checkout("ABCD"))
+    # print(checkout_solution.checkout("AABCD"))
+    # print(checkout_solution.checkout("AABCDD"))
+    # print(checkout_solution.checkout("AABCDDD"))
+    # print(checkout_solution.checkout("AABCDDDD"))
+    # print(checkout_solution.checkout("AABCDDDDD"))
 
 
 

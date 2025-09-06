@@ -5,7 +5,7 @@ class CheckoutSolution:
     def checkout(self, skus):
         if skus == "": return 0
 
-        if skus.find("^[^A-D]$") != -1: return -1
+        # if skus.find("^[^A-D]$") != -1: return -1
 
         counter = {
             "A": skus.count("A"),
@@ -20,3 +20,4 @@ class CheckoutSolution:
         price += counter["D"] * 15
 
         return price
+

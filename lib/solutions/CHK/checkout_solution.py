@@ -8,8 +8,8 @@ class CheckoutSolution:
     def checkout(self, skus):
         if skus == "": return 0
 
-        print(skus.find("^[A-D]*$"))
-        if skus.find("^[^A-D]*$") != -1: return -1
+        print(skus)
+        if skus.find("^[^A-D]+$") != -1: return -1
 
         counter = {
             "A": skus.count("A") if skus.find("A") != -1 else 0,
@@ -34,4 +34,5 @@ if __name__ == "__main__":
     # print(checkout_solution.checkout("AABCDDD"))
     # print(checkout_solution.checkout("AABCDDDD"))
     # print(checkout_solution.checkout("AABCDDDDD"))
+
 

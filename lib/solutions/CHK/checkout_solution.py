@@ -5,7 +5,8 @@ class CheckoutSolution:
     def checkout(self, skus):
         if skus == "": return 0
 
-        if skus.find("^[^A-D]+$") != -1: return -1
+        print(skus.find("[^A-D]"))
+        if skus.find("[^A-D]") != -1: return -1
 
         counter = {
             "A": skus.count("A") if skus.find("A") != -1 else 0,

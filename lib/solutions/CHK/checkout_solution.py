@@ -19,6 +19,3 @@ class CheckoutSolution:
         price += counter["D"] * 15
 
         return price
-
-
-

@@ -1,7 +1,3 @@
-
-import re
-
-
 class CheckoutSolution:
 
     # skus = unicode string
@@ -23,16 +19,6 @@ class CheckoutSolution:
         price += counter["D"] * 15
 
         return price
-        
-if __name__ == "__main__":
-    checkout_solution = CheckoutSolution()
-    print(checkout_solution.checkout("ABCa"))
-    # print(checkout_solution.checkout("ABCD"))
-    # print(checkout_solution.checkout("AABCD"))
-    # print(checkout_solution.checkout("AABCDD"))
-    # print(checkout_solution.checkout("AABCDDD"))
-    # print(checkout_solution.checkout("AABCDDDD"))
-    # print(checkout_solution.checkout("AABCDDDDD"))
 
 
 

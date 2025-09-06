@@ -6,12 +6,11 @@ class CheckoutSolution:
         if skus == "": return 0
 
         # if skus.find("^[^A-D]$") != -1: return -1
-
         counter = {
-            "A": skus.count("A"),
-            "B": skus.count("B"),
-            "C": skus.count("C"),
-            "D": skus.count("D")
+            "A": skus.count("A") if skus.find("A") != -1 else 0,
+            "B": skus.count("B") if skus.find("B") != -1 else 0,
+            "C": skus.count("C") if skus.find("C") != -1 else 0,
+            "D": skus.count("D") if skus.find("D") != -1 else 0
         }
 
         price = counter["A"] // 3 * 130 + counter["A"] % 3 * 50
@@ -20,4 +19,5 @@ class CheckoutSolution:
         price += counter["D"] * 15
 
         return price
+
 

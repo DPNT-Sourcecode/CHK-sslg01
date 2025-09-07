@@ -64,7 +64,7 @@ class CheckoutSolution:
             "E": 2,
         },
         "F": {
-            "F": 2,
+            "F": 3,
         },
         "M": {
             "N": 3,
@@ -73,7 +73,7 @@ class CheckoutSolution:
             "R": 3,
         },
         "U": {
-            "U": 3,
+            "U": 4,
         },
     }
 
@@ -101,7 +101,6 @@ class CheckoutSolution:
             for count in sorted(self.DISCOUNTED_PRICE[sku].keys(), reverse=True):
                 price += remaining // count * self.DISCOUNTED_PRICE[sku][count]
                 remaining %= count
-                print(price, remaining)
         
         return price + remaining * self.PRICE[sku]
 
@@ -117,7 +116,3 @@ class CheckoutSolution:
         if len(skus) != sum(self.counter.values()): return -1
 
         return sum(self.totalSkuPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0)
-
-if __name__ == "__main__":
-    checkout = CheckoutSolution()
-    print(checkout.checkout("FFFF"))

@@ -86,27 +86,25 @@ class CheckoutSolution:
         itemToMatch = list(self.FREE_DISCOUNT[sku].keys())[0]
         return self.counter[itemToMatch] // self.FREE_DISCOUNT[sku][itemToMatch]
 
-    def freeItemsCounter(self):
+    def freeSkusCounter(self):
         return {
             sku: count - self.freeItemCount(sku)
             for sku, count in self.counter.items()
         }
 
-    def discountedPrice(self, item):
-        if not item in self.DISCOUNTED_PRICE: return 0
-        freeItemsCounter = self.freeItemsCounter()
+    def totalSkuPrice(self, sku):
+        freeItemsCounter = self.freeSkusCounter()
         price = 0
-        remaining = freeItemsCounter[item]
-        print(freeItemsCounter)
+        remaining = freeItemsCounter[sku]
 
-        if item in self.DISCOUNTED_PRICE:
-            for count in sorted(self.DISCOUNTED_PRICE[item].keys(), reverse=True):
-                price += remaining // count * self.DISCOUNTED_PRICE[item][count]
+        if sku in self.DISCOUNTED_PRICE:
+            for count in sorted(self.DISCOUNTED_PRICE[sku].keys(), reverse=True):
+                price += remaining // count * self.DISCOUNTED_PRICE[sku][count]
                 remaining %= count
                 print(price, remaining)
                 if remaining < count: break
         
-        return price + remaining * self.PRICE[item]
+        return price + remaining * self.PRICE[sku]
 
     # skus = unicode string
     def checkout(self, skus):
@@ -119,7 +117,7 @@ class CheckoutSolution:
 
         if len(skus) != sum(self.counter.values()): return -1
 
-        return sum(self.discountedPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0)
+        return sum(self.totalSkuPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0)
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()

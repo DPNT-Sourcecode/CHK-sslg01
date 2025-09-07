@@ -1,3 +1,6 @@
+import string
+
+
 class CheckoutSolution:
 
     def priceA(self, counter):
@@ -21,7 +24,7 @@ class CheckoutSolution:
 
         counter = {
             item: skus.count(item) if skus.find(item) != -1 else 0
-            for item in "ABCDEF"
+            for item in string.ascii_uppercase
         }
 
         if len(skus) != sum(counter.values()): return -1
@@ -34,3 +37,4 @@ class CheckoutSolution:
         price += self.priceF(counter)
 
         return price
+

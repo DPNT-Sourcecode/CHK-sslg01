@@ -143,4 +143,4 @@ class CheckoutSolution:
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()
-    print(checkout.checkout("AABABABABAA"))
+    print(checkout.checkout("AAAAAA"))

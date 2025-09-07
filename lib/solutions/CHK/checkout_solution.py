@@ -100,9 +100,9 @@ class CheckoutSolution:
 
         if item in self.DISCOUNTED_PRICE:
             for count in sorted(self.DISCOUNTED_PRICE[item].keys(), reverse=True):
-                print(count)
                 price += freeItemsCounter[item] // count * self.DISCOUNTED_PRICE[item][count]
                 remaining %= count
+                print(price, remaining)
         
         return price + remaining * self.PRICE[item]
 
@@ -145,3 +145,4 @@ class CheckoutSolution:
 if __name__ == "__main__":
     checkout = CheckoutSolution()
     print(checkout.checkout("AAAAAA"))
+

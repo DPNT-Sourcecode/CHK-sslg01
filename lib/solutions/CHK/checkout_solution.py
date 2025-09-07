@@ -37,4 +37,3 @@ class CheckoutSolution:
         price += self.priceF(counter)
 
         return price
-

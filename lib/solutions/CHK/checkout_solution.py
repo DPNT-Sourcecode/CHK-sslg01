@@ -97,6 +97,7 @@ class CheckoutSolution:
         freeItemsCounter = self.freeItemsCounter()
         price = 0
         remaining = freeItemsCounter[item]
+        print(freeItemsCounter)
 
         if item in self.DISCOUNTED_PRICE:
             for count in sorted(self.DISCOUNTED_PRICE[item].keys(), reverse=True):
@@ -122,4 +123,4 @@ class CheckoutSolution:
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()
-    print(checkout.checkout("C"))
+    print(checkout.checkout("A"))

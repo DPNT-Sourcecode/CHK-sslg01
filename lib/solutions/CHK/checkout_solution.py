@@ -8,7 +8,8 @@ class CheckoutSolution:
             "A": skus.count("A") if skus.find("A") != -1 else 0,
             "B": skus.count("B") if skus.find("B") != -1 else 0,
             "C": skus.count("C") if skus.find("C") != -1 else 0,
-            "D": skus.count("D") if skus.find("D") != -1 else 0
+            "D": skus.count("D") if skus.find("D") != -1 else 0,
+            "E": skus.count("E") if skus.find("E") != -1 else 0
         }
 
         if len(skus) != sum(counter.values()): return -1

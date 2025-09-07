@@ -100,6 +100,7 @@ class CheckoutSolution:
 
         if item in self.DISCOUNTED_PRICE:
             for count in sorted(self.DISCOUNTED_PRICE[item].keys(), reverse=True):
+                print(count)
                 price += freeItemsCounter[item] // count * self.DISCOUNTED_PRICE[item][count]
                 remaining %= count
         
@@ -131,7 +132,7 @@ class CheckoutSolution:
 
         if len(skus) != sum(self.counter.values()): return -1
 
-        return sum(self.discountedPrice(item) for item in self.counter.keys())
+        return sum(self.discountedPrice(item) for item in self.counter.keys() if self.counter[item] > 0)
         # price = self.priceA(counter)
         # price += self.priceB(counter)
         # price += counter["C"] * 20

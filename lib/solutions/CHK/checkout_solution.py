@@ -18,10 +18,18 @@ class CheckoutSolution:
         num2E = counter["E"] // 2
         num1B = max(counter["B"] - num2E, 0)
 
+        num3F = counter["F"] // 3
+
         price = num5A * 200 + num3A * 130 + num1A * 50
         price += (num1B // 2) * 45 + (num1B % 2) * 30
         price += counter["C"] * 20
         price += counter["D"] * 15
         price += counter["E"] * 40
+        price += (counter["F"] - num3F) * 20
 
         return price
+
+if __name__ == "__main__":
+    checkout_solution = CheckoutSolution()
+    print(checkout_solution.checkout("ABCD"))
+    # print(checkout_solution.checkout("ABCD"))

@@ -97,12 +97,11 @@ class CheckoutSolution:
             for sku, count in self.counter.items()
         }
 
-    def groupDiscountedCounter(self, counter):
-        newCounter = counter.copy()
-        for group, discount in self.GROUP_DISCOUNT.items():
-            discountCount = list(discount.keys())[0]
-            groupCount = sum(counter[sku] for sku in group) // discountCount
-            newCounter[group] = groupCount
+    def groupDiscountedPrice(self):
+        return { 
+            group: sum(self.counter[sku] for sku in group) // discount[0] * discount[1]
+            for group, discount in self.GROUP_DISCOUNT.items()
+        }
 
     def totalSkuPrice(self, sku):
         freeItemsCounter = self.freeSkusCounter()

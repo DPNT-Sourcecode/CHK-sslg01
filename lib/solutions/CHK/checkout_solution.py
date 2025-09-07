@@ -119,8 +119,8 @@ class CheckoutSolution:
 
         if len(skus) != sum(self.counter.values()): return -1
 
-        return sum(self.discountedPrice(item) for item in self.counter.keys() if self.counter[item] > 0)
+        return sum(self.discountedPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0)
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()
-    print(checkout.checkout("A"))
+    print(checkout.checkout("C"))

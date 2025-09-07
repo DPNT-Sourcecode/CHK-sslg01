@@ -34,8 +34,3 @@ class CheckoutSolution:
         price += self.priceF(counter)
 
         return price
-
-if __name__ == "__main__":
-    checkout_solution = CheckoutSolution()
-    print(checkout_solution.checkout("ABCD"))
-    # print(checkout_solution.checkout("ABCD"))

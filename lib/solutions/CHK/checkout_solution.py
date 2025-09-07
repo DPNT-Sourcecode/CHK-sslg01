@@ -5,11 +5,8 @@ class CheckoutSolution:
         if skus == "": return 0
 
         counter = {
-            "A": skus.count("A") if skus.find("A") != -1 else 0,
-            "B": skus.count("B") if skus.find("B") != -1 else 0,
-            "C": skus.count("C") if skus.find("C") != -1 else 0,
-            "D": skus.count("D") if skus.find("D") != -1 else 0,
-            "E": skus.count("E") if skus.find("E") != -1 else 0
+            item: skus.count(item) if skus.find(item) != -1 else 0
+            for item in "ABCDEF"
         }
 
         if len(skus) != sum(counter.values()): return -1
@@ -28,4 +25,3 @@ class CheckoutSolution:
         price += counter["E"] * 40
 
         return price
-

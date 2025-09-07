@@ -1,3 +1,4 @@
+from itertools import count
 import string
 
 
@@ -32,7 +33,7 @@ class CheckoutSolution:
         "Z": 50,
     }
 
-    DISCOUNT = {
+    DISCOUNTED_PRICE = {
         "A": {
             5: 200,
             3: 130,
@@ -59,6 +60,51 @@ class CheckoutSolution:
         },
     }
 
+    FREE_DISCOUNT = {
+        "B": {
+            "E": 2,
+        },
+        "F": {
+            "F": 2,
+        },
+        "M": {
+            "N": 3,
+        },
+        "Q": {
+            "R": 3,
+        },
+        "U": {
+            "U": 3,
+        },
+    }
+
+    def __init__(self):
+        self.counter = {}
+
+    def freeItemCount(self, sku):
+        if not sku in self.FREE_DISCOUNT: return 0
+        itemToMatch = list(self.FREE_DISCOUNT[sku].keys())[0]
+        return self.counter[itemToMatch] // self.FREE_DISCOUNT[sku][itemToMatch]
+
+    def freeItemsCounter(self):
+        return {
+            sku: count - self.freeItemCount(sku)
+            for sku, count in self.counter.items()
+        }
+
+    def discountedPrice(self, item):
+        if not item in self.DISCOUNTED_PRICE: return 0
+        freeItemsCounter = self.freeItemsCounter()
+        price = 0
+        remaining = freeItemsCounter[item]
+
+        if item in self.DISCOUNTED_PRICE:
+            for count in sorted(self.DISCOUNTED_PRICE[item].keys(), reverse=True):
+                price += freeItemsCounter[item] // count * self.DISCOUNTED_PRICE[item][count]
+                remaining %= count
+        
+        return price + remaining * self.PRICE[item]
+
     # def priceA(self, counter):
     #     num5A = counter["A"] // 5
     #     num3A = (counter["A"] % 5) // 3
@@ -78,13 +124,14 @@ class CheckoutSolution:
     def checkout(self, skus):
         if skus == "": return 0
 
-        counter = {
+        self.counter = {
             item: skus.count(item) if skus.find(item) != -1 else 0
             for item in string.ascii_uppercase
         }
 
-        if len(skus) != sum(counter.values()): return -1
+        if len(skus) != sum(self.counter.values()): return -1
 
+        return sum(self.discountedPrice(item) for item in self.counter.keys())
         # price = self.priceA(counter)
         # price += self.priceB(counter)
         # price += counter["C"] * 20
@@ -93,3 +140,7 @@ class CheckoutSolution:
         # price += self.priceF(counter)
 
         # return price
+
+if __name__ == "__main__":
+    checkout = CheckoutSolution()
+    print(checkout.checkout("AABABABABAA"))

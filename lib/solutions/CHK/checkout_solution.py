@@ -1,3 +1,4 @@
+import dis
 import string
 
 
@@ -77,6 +78,10 @@ class CheckoutSolution:
         },
     }
 
+    GROUP_DISCOUNT = {
+        "STXYZ": (3, 45),
+    }
+
     def __init__(self):
         self.counter = {}
 
@@ -91,6 +96,13 @@ class CheckoutSolution:
             sku: count - self.freeItemCount(sku)
             for sku, count in self.counter.items()
         }
+
+    def groupDiscountedCounter(self, counter):
+        newCounter = counter.copy()
+        for group, discount in self.GROUP_DISCOUNT.items():
+            discountCount = list(discount.keys())[0]
+            groupCount = sum(counter[sku] for sku in group) // discountCount
+            newCounter[group] = groupCount
 
     def totalSkuPrice(self, sku):
         freeItemsCounter = self.freeSkusCounter()

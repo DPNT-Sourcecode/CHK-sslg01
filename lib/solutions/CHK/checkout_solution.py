@@ -97,7 +97,6 @@ class CheckoutSolution:
             groupDiscountedCounter[group] = sum(skusCounter[sku] for sku in group) // discount[0]
             remaining = groupDiscountedCounter[group] * discount[0]
             for sku in sorted([sku for sku in group], key=lambda x: self.PRICE[x], reverse=True):
-                print(sku, remaining)
                 if remaining == 0:
                     groupDiscountedCounter[sku] = skusCounter[sku]
                     continue
@@ -138,8 +137,6 @@ class CheckoutSolution:
         }
         totalPrice = { sku: self.totalSkuPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0 }
         
-        print(totalPrice)
-        print(groupDiscountedCounter)
         for group, count in groupDiscountedCounter.items():
             if group in self.GROUP_DISCOUNT:
                 totalPrice[group] = count * self.GROUP_DISCOUNT[group][1]
@@ -149,12 +146,7 @@ class CheckoutSolution:
                 continue
             if group in self.PRICE:
                 totalPrice[group] = count * self.PRICE[group]
-        print(totalPrice)
                 
         return sum(totalPrice.values())
-
-if __name__ == "__main__":
-    checkout = CheckoutSolution()
-    print(checkout.checkout("SZZZ"))
 
 

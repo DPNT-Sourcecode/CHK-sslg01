@@ -29,8 +29,8 @@ class CheckoutSolution:
         "V": 50,
         "W": 20,
         "X": 17,
-        "Y": 10,
-        "Z": 50,
+        "Y": 20,
+        "Z": 21,
     }
 
     DISCOUNTED_PRICE = {
@@ -46,7 +46,7 @@ class CheckoutSolution:
             10: 80,
         },
         "K": {
-            2: 150,
+            2: 120,
         },
         "P": {
             5: 200,
@@ -144,3 +144,4 @@ class CheckoutSolution:
 if __name__ == "__main__":
     checkout = CheckoutSolution()
     print(checkout.checkout("K"))
+

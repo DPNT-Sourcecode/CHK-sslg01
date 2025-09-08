@@ -135,7 +135,7 @@ class CheckoutSolution:
             if group in self.GROUP_DISCOUNT:
                 totalPrice[group] = count * self.GROUP_DISCOUNT[group][1]
                 continue
-            if group in self.PRICE:
+            if group in totalPrice:
                 totalPrice[group] = count * self.PRICE[group]
                 continue
 

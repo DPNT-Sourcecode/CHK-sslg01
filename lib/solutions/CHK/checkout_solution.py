@@ -138,12 +138,11 @@ class CheckoutSolution:
                 continue
             if group in self.PRICE:
                 totalPrice[group] = count * self.PRICE[group]
-            for sku in group:
-                if sku not in totalPrice:
-                    totalPrice[sku] = 0
+            
         print(totalPrice)
         return sum(totalPrice.values())
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()
     print(checkout.checkout("SSS"))
+

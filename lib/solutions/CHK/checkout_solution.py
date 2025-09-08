@@ -99,14 +99,14 @@ class CheckoutSolution:
             for sku in sorted([sku for sku in group], key=lambda x: self.PRICE[x], reverse=True):
                 print(sku, remaining)
                 if remaining == 0:
-                    break
+                    groupDiscountedCounter[sku] = skusCounter[sku]
+                    continue
                 if skusCounter[sku] > remaining:
                     skusCounter[sku] -= remaining
                     remaining = 0
                 else:
                     remaining -= skusCounter[sku]
                     skusCounter[sku] = 0
-                groupDiscountedCounter[sku] = skusCounter[sku]
         return groupDiscountedCounter
 
     def totalSkuPrice(self, sku):
@@ -156,4 +156,5 @@ class CheckoutSolution:
 if __name__ == "__main__":
     checkout = CheckoutSolution()
     print(checkout.checkout("SZZZ"))
+
 

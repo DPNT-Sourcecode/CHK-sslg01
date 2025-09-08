@@ -135,7 +135,8 @@ class CheckoutSolution:
             if count > 0 
         }
         totalPrice = { sku: self.totalSkuPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0 }
-
+        
+        print(totalPrice)
         for group, count in groupDiscountedCounter.items():
             if group in self.GROUP_DISCOUNT:
                 totalPrice[group] = count * self.GROUP_DISCOUNT[group][1]
@@ -146,5 +147,10 @@ class CheckoutSolution:
             if group in self.PRICE:
                 totalPrice[group] = count * self.PRICE[group]
                 
+        print(totalPrice)
         return sum(totalPrice.values())
+
+if __name__ == "__main__":
+    checkout = CheckoutSolution()
+    print(checkout.checkout("SSSZ"))
 

@@ -139,4 +139,4 @@ class CheckoutSolution:
                 totalPrice[group] = count * self.PRICE[group]
                 continue
 
-        return totalPrice
+        return sum(totalPrice.values())

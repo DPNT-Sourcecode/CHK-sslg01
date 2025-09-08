@@ -139,9 +139,10 @@ class CheckoutSolution:
                 totalPrice[group] = count * self.PRICE[group]
                 continue
 
+        print(totalPrice)
         return sum(totalPrice.values())
 
 if __name__ == "__main__":
     checkout = CheckoutSolution()
-    print(checkout.checkout("K"))
+    print(checkout.checkout("SSS"))
 

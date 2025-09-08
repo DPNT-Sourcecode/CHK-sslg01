@@ -142,6 +142,3 @@ class CheckoutSolution:
         if len(skus) != sum(self.counter.values()): return -1
 
         return sum(self.totalSkuPrice(sku) for sku in self.counter.keys() if self.counter[sku] > 0)
-
-
-
